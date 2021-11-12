@@ -5,13 +5,19 @@ A macOS-Like Key-Mapping for Windows 10 based on autohotkey
 
 note: this self-use keymapping is based on this repo <u>https://github.com/stroebjo/autohotkey-windows-mac-keyboard</u> in addition with some custom config and improvements. Changes below are included or to be included:
 
-[x] line start and line end using `CMD/WIN + Left` and `CMD/WIN + Right`
-[x] line delete using `CMD/WIN + BackSpace`
-[x] line selection using `CMD/WIN + SHIFT + Left` and `CMD/WIN + SHIFT + Left`
-[x] `CMD/WIN + F1-5` for custom app launchers
-[x] custom `CMD/WIN + b`, `CMD/WIN + j`, `CMD/WIN + /` key for vscode sidebar, built-in terminal and fast comment
-[] using `ALT` for word-based cursor actions
-[] `CMD/WIN + SHIFT + 5` for fast screen recording
+- [x] line start and line end using `CMD/WIN + Left` and `CMD/WIN + Right`
+
+- [x] line delete using `CMD/WIN + BackSpace`
+
+- [x] line selection using `CMD/WIN + SHIFT + Left` and `CMD/WIN + SHIFT + Left`
+
+- [x] `CMD/WIN + F1-5` for custom app launchers
+
+- [x] custom `CMD/WIN + b`, `CMD/WIN + j`, `CMD/WIN + /` key for vscode sidebar, built-in terminal and fast comment
+
+- [ ] using `ALT` for word-based cursor actions
+
+- [ ] `CMD/WIN + SHIFT + 5` for fast screen recording
 
 ## Things you need to know
 

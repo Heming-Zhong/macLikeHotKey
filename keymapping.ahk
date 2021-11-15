@@ -190,13 +190,27 @@ Lwin & Tab::AltTab
 
 #IfWinActive
 
+; Visual Studio Code
 #IfWinActive, ahk_exe Code.exe
 
+; toggle terminal
 #j::Send ^j
 
+; toggle sidebar
 #b::Send ^b
 
+; toggle comment
 #/::Send ^/
+
+; toggle command palette
+#p::Send ^p
+#+p::Send ^+p
+
+; settings
+#,::Send ^,
+
+; NOTE: Need to set terminal:clear to ctrl+k first
+#k::Send ^k
 
 #IfWinActive
 
@@ -205,14 +219,23 @@ Lwin & Tab::AltTab
 #Right::Send, {End}
 
 ; select the cursor to the line start or end
-#+Left::Send {Shift}+{Home}
-#+Right::Send {Shift}+{End}
+#+Left::Send +{Home}
+#+Right::Send +{End}
 
-; change word select to alt
-!Left::Send {Ctrl}+{Left}
-!Right::Send {Ctrl}+{Right}
-!+Left::Send {Ctrl}+{Shift}+{Left}
-!+Right::Send {Ctrl}+{Shift}+{Right}
+; move the cursor to the page top or bottom
+#Up::Send, ^{Home}
+#Down::Send, ^{End}
+
+; select the content to the top or bottom
+#+Up::Send, ^+{Home}
+#+Down::Send, ^+{End}
 
 ; delete to the line start
-Lwin & BackSpace::Send {Shift}+{Home}+{Del}
+Lwin & BackSpace::Send +{Home}{Del}
+
+; change word select to alt, including delete
+!Left::Send ^{Left}
+!Right::Send ^{Right}
+!+Left::Send ^+{Left}
+!+Right::Send ^+{Right}
+!BackSpace::Send ^{BackSpace}

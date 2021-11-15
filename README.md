@@ -15,7 +15,7 @@ note: this self-use keymapping is based on this repo <u>https://github.com/stroe
 
 - [x] custom `CMD/WIN + b`, `CMD/WIN + j`, `CMD/WIN + /` key for vscode sidebar, built-in terminal and fast comment
 
-- [ ] using `ALT` for word-based cursor actions
+- [x] using `ALT` for word-based cursor actions
 
 - [ ] `CMD/WIN + SHIFT + 5` for fast screen recording
 

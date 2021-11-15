@@ -27,6 +27,9 @@ SendMode Input
 ; Capture portion of the screen with CMD/WIN + SHIFT + 4
 #+4::#+s
 
+; Screen recording with CMD/WIN + SHIFT + 5
+#+5::Send #!g
+
 ; --------------------------------------------------------------
 ; media/function keys all mapped to the right option key
 ; --------------------------------------------------------------

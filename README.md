@@ -13,11 +13,11 @@ note: this self-use keymapping is based on this repo <u>https://github.com/stroe
 
 - [x] `CMD/WIN + F1-5` for custom app launchers
 
-- [x] custom `CMD/WIN + b`, `CMD/WIN + j`, `CMD/WIN + /` key for vscode sidebar, built-in terminal and fast comment
+- [x] custom keys for vscode
 
 - [x] using `ALT` for word-based cursor actions
 
-- [ ] `CMD/WIN + SHIFT + 5` for fast screen recording
+- [x] `CMD/WIN + SHIFT + 5` for fast screen recording
 
 ## Things you need to know
 

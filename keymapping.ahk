@@ -209,6 +209,8 @@ Lwin & Tab::AltTab
 #p::Send ^p
 #+p::Send ^+p
 
+
+
 ; settings
 #,::Send ^,
 
@@ -216,6 +218,10 @@ Lwin & Tab::AltTab
 #k::Send ^k
 
 #IfWinActive
+
+; --------------------------------------------------------------
+; Cursor actions in OS X
+; --------------------------------------------------------------
 
 ; move the cursor to the line start or end
 #Left::Send, {Home}
@@ -242,3 +248,10 @@ Lwin & BackSpace::Send +{Home}{Del}
 !+Left::Send ^+{Left}
 !+Right::Send ^+{Right}
 !BackSpace::Send ^{BackSpace}
+
+; --------------------------------------------------------------
+; mouse/trackpad related actions
+; --------------------------------------------------------------
+
+; map ctrl-left click to cmd/win-left click
+#LButton::Send ^{Click}

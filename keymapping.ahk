@@ -191,6 +191,13 @@ Lwin & Tab::AltTab
 ; Show source code with cmd + alt + u
 #!u::Send ^u
 
+; zoom in & zoom out
+#=::Send ^=
+#-::Send ^-
+
+; undo tab close
+#z::Send ^!t
+
 #IfWinActive
 
 ; Visual Studio Code
@@ -216,6 +223,12 @@ Lwin & Tab::AltTab
 
 ; NOTE: Need to set terminal:clear to ctrl+k first
 #k::Send ^k
+
+#IfWinActive
+
+#IfWinActive, ahk_exe, explorer.exe
+
+#BackSpace::Send ^d
 
 #IfWinActive
 

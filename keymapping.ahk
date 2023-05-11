@@ -22,21 +22,21 @@ SendMode Input
 ; --------------------------------------------------------------
 
 ; Capture entire screen with CMD/WIN + SHIFT + 3
-#+3::send #{PrintScreen}
+^+3::Send {PrintScreen}
 
 ; Capture portion of the screen with CMD/WIN + SHIFT + 4
-#+4::#+s
+^+4::Send #+{S}
 
 ; Screen recording with CMD/WIN + SHIFT + 5
-#+5::Send #!g
+^+5::Send #!g
 
 ; --------------------------------------------------------------
 ; media/function keys all mapped to the right option key
 ; --------------------------------------------------------------
 
-RAlt & F7::SendInput {Media_Prev}
-RAlt & F8::SendInput {Media_Play_Pause}
-RAlt & F9::SendInput {Media_Next}
+F7::SendInput {Media_Prev}
+F8::SendInput {Media_Play_Pause}
+F9::SendInput {Media_Next}
 F10::SendInput {Volume_Mute}
 F11::SendInput {Volume_Down}
 F12::SendInput {Volume_Up}
@@ -70,47 +70,21 @@ F15::SendInput {Pause}
 ; OS X system shortcuts
 ; --------------------------------------------------------------
 
-; Make Ctrl + S work with cmd (windows) key
-#s::Send, ^s
-
-; Selecting
-#a::Send, ^a
-
-; Copying
-#c::Send, ^c
-
-; Pasting
-#v::Send, ^v
-
-; Cutting
-#x::Send, ^x
-
-; Opening
-#o::Send ^o
-
-; Finding
-#f::Send ^f
-
-; Undo
-#z::Send ^z
-
-; Redo
-#y::Send ^y
-
-; New tab
-#t::Send ^t
-
-; close tab
-#w::Send ^w
-
 ; Close windows (cmd + q to Alt + F4)
-#q::Send !{F4}
+^q::Send !{F4}
+
+; Minimize active window
+^m::WinMinimize, A
+
+; Minimize all but Active Window
+!^m::
+WinGet, winid ,, A
+WinMinimizeAll
+WinActivate ahk_id %winid%
+return
 
 ; Remap Windows + Tab to Alt + Tab.
 Lwin & Tab::AltTab
-
-; minimize windows
-#m::WinMinimize,a
 
 
 ; --------------------------------------------------------------
@@ -177,83 +151,28 @@ Lwin & Tab::AltTab
 ;^ö::SendInput {{} 
 ;^ä::SendInput {}} 
 
-
-; --------------------------------------------------------------
-; Application specific
-; --------------------------------------------------------------
-
-; New Edge
-#IfWinActive, ahk_class Chrome_WidgetWin_1
-
-; Show Web Developer Tools with cmd + alt + i
-#!i::Send {F12}
-
-; Show source code with cmd + alt + u
-#!u::Send ^u
-
-; zoom in & zoom out
-#=::Send ^=
-#-::Send ^-
-
-; undo tab close
-#z::Send ^!t
-
-#IfWinActive
-
-; Visual Studio Code
-#IfWinActive, ahk_exe Code.exe
-
-; toggle terminal
-#j::Send ^j
-
-; toggle sidebar
-#b::Send ^b
-
-; toggle comment
-#/::Send ^/
-
-; toggle command palette
-#p::Send ^p
-#+p::Send ^+p
-
-
-
-; settings
-#,::Send ^,
-
-; NOTE: Need to set terminal:clear to ctrl+k first
-#k::Send ^k
-
-#IfWinActive
-
-#IfWinActive, ahk_exe, explorer.exe
-
-#BackSpace::Send ^d
-
-#IfWinActive
-
 ; --------------------------------------------------------------
 ; Cursor actions in OS X
 ; --------------------------------------------------------------
 
 ; move the cursor to the line start or end
-#Left::Send, {Home}
-#Right::Send, {End}
+^Left::Send, {Home}
+^Right::Send, {End}
 
 ; select the cursor to the line start or end
-#+Left::Send +{Home}
-#+Right::Send +{End}
+^+Left::Send +{Home}
+^+Right::Send +{End}
 
 ; move the cursor to the page top or bottom
-#Up::Send, ^{Home}
-#Down::Send, ^{End}
+^Up::Send, ^{Home}
+^Down::Send, ^{End}
 
 ; select the content to the top or bottom
-#+Up::Send, ^+{Home}
-#+Down::Send, ^+{End}
+^+Up::Send, ^+{Home}
+^+Down::Send, ^+{End}
 
 ; delete to the line start
-Lwin & BackSpace::Send +{Home}{Del}
+$^BackSpace::Send +{Home}{Delete}
 
 ; change word select to alt, including delete
 !Left::Send ^{Left}
@@ -263,8 +182,45 @@ Lwin & BackSpace::Send +{Home}{Del}
 !BackSpace::Send ^{BackSpace}
 
 ; --------------------------------------------------------------
-; mouse/trackpad related actions
+; Application specific
 ; --------------------------------------------------------------
 
-; map ctrl-left click to cmd/win-left click
-#LButton::Send ^{Click}
+; New Edge
+#IfWinActive, ahk_exe msedge.exe
+
+; Show Web Developer Tools with cmd + alt + i
+^!i::Send {F12}
+
+; Show source code with cmd + alt + u
+^!u::Send ^u
+
+; undo tab close
+^z::Send ^!t
+
+#IfWinActive
+
+; Visual Studio Code
+#IfWinActive, ahk_exe Code.exe
+
+; NOTE: Need to set terminal:clear to ctrl+k first
+#k::Send ^k
+
+#IfWinActive
+
+#IfWinActive ahk_class CabinetWClass ahk_exe explorer.exe
+
+^i::Send !{Enter}           ; Cmd+i: Get Info
+^BackSpace::Send {Delete}   ; Cmd+Backspace: send to trash
+^d::return,                 ; block default ctrl+d shortcut
+^r::Send {F5}               ; Cmd+r: Refresh
+$Enter:: 			        ; Use Enter key to rename (F2), unless focus is inside a text input field. TODO: resolve conflicts with monitor brightness
+ControlGetFocus, fc, A
+If fc contains Edit,Search,Notify,Windows.UI.Core.CoreWindow1,SysTreeView321
+    Send {Enter}
+Else Send {F2}
+Return
+
+#IfWinActive
+; --------------------------------------------------------------
+; mouse/trackpad related actions
+; --------------------------------------------------------------

@@ -76,12 +76,8 @@ F15::SendInput {Pause}
 ; Minimize active window
 ^m::WinMinimize, A
 
-; Minimize all but Active Window
-!^m::
-WinGet, winid ,, A
-WinMinimizeAll
-WinActivate ahk_id %winid%
-return
+; Minimize all
+!^m::WinMinimizeAll
 
 ; Remap Windows + Tab to Alt + Tab.
 Lwin & Tab::AltTab

@@ -82,6 +82,9 @@ F15::SendInput {Pause}
 ; Remap Windows + Tab to Alt + Tab.
 Lwin & Tab::AltTab
 
+; Desktop switch shortcuts
+#Left::Send #^{Left}
+#Right::Send #^{Right}
 
 ; --------------------------------------------------------------
 ; macOS keyboard mappings for special chars
